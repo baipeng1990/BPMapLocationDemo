@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dxG-GO-sgI"/>
+                        <viewControllerLayoutGuide type="bottom" id="1ui-aL-NKT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVz-y5-Bns">
+                                <rect key="frame" x="172" y="120" width="31" height="30"/>
+                                <state key="normal" title="定位"/>
+                                <connections>
+                                    <action selector="dingwei:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8vY-xL-5tP"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P9C-I3-Q4V">
+                                <rect key="frame" x="177" y="250" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dV-Ea-Jz5">
+                                <rect key="frame" x="170" y="310" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwB-OW-dYE">
+                                <rect key="frame" x="170" y="351" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经纬度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgE-he-qgS">
+                                <rect key="frame" x="161.5" y="392" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VwB-OW-dYE" firstAttribute="top" secondItem="2dV-Ea-Jz5" secondAttribute="bottom" constant="20" id="1c0-62-uDi"/>
+                            <constraint firstItem="VwB-OW-dYE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HCv-lK-eks"/>
+                            <constraint firstItem="fgE-he-qgS" firstAttribute="top" secondItem="VwB-OW-dYE" secondAttribute="bottom" constant="20" id="Lj4-PJ-9hn"/>
+                            <constraint firstItem="fgE-he-qgS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OwO-8X-wMP"/>
+                            <constraint firstItem="YVz-y5-Bns" firstAttribute="top" secondItem="dxG-GO-sgI" secondAttribute="bottom" constant="100" id="Ulu-vE-2MK"/>
+                            <constraint firstItem="P9C-I3-Q4V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dPz-Rl-xOS"/>
+                            <constraint firstItem="YVz-y5-Bns" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="heq-5W-Iy5"/>
+                            <constraint firstItem="P9C-I3-Q4V" firstAttribute="top" secondItem="YVz-y5-Bns" secondAttribute="bottom" constant="100" id="iXB-4E-nrG"/>
+                            <constraint firstItem="2dV-Ea-Jz5" firstAttribute="top" secondItem="P9C-I3-Q4V" secondAttribute="bottom" constant="40" id="qXN-sg-PuC"/>
+                            <constraint firstItem="2dV-Ea-Jz5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wTA-wx-3l8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityView" destination="P9C-I3-Q4V" id="2s4-yu-Sff"/>
+                        <outlet property="cityLabel" destination="2dV-Ea-Jz5" id="J6E-fr-QSI"/>
+                        <outlet property="coordinate" destination="fgE-he-qgS" id="mfd-8L-yRO"/>
+                        <outlet property="placeLabel" destination="VwB-OW-dYE" id="zxN-wI-3Go"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
