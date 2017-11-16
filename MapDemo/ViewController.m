@@ -44,15 +44,18 @@
 }
 
 
--(void)findMe{
-    if ([CLLocationManager locationServicesEnabled] && ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)){
+
+
+- (void)locate {
+    //判断定位功能是否打开
+    if ([CLLocationManager locationServicesEnabled]) {
+
         NSLog(@"开始定位");
+
         [self.locationManager startUpdatingLocation];
     }
-    else if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied) {
-        
-        //定位不能用
-        
+
+    else{
         UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"允许\"定位\"提示" message:@"请在设置中打开定位" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * ok = [UIAlertAction actionWithTitle:@"打开定位" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //打开定位设置
@@ -60,69 +63,14 @@
             [[UIApplication sharedApplication] openURL:settingsURL];
         }];
         UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alertVC addAction:cancel];
-        [alertVC addAction:ok];
-        [self presentViewController:alertVC animated:YES completion:nil];
-        
-    }else if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
-        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"允许\"定位\"提示" message:@"22222222" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"打开定位" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //打开定位设置
-            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            [[UIApplication sharedApplication] openURL:settingsURL];
-        }];
-        UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        [alertVC addAction:cancel];
-        [alertVC addAction:ok];
-        [self presentViewController:alertVC animated:YES completion:nil];
-    }
-}
 
-- (void)locate {
-    //判断定位功能是否打开
-//    if ([CLLocationManager locationServicesEnabled]) {
-//
-//        NSLog(@"开始定位");
-//
-//        [self.locationManager startUpdatingLocation];
-//    }
-//
-//    else{
-//        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"允许\"定位\"提示" message:@"请在设置中打开定位" preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"打开定位" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            //打开定位设置
-//            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//            [[UIApplication sharedApplication] openURL:settingsURL];
-//        }];
-//        UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//
-//        }];
-//        [alertVC addAction:cancel];
-//        [alertVC addAction:ok];
-//        [self presentViewController:alertVC animated:YES completion:nil];
-//    }
-    
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"允许\"定位\"提示" message:@"22222222" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"允许定位" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //打开定位设置
-            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            [[UIApplication sharedApplication] openURL:settingsURL];
-        }];
-        UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
         }];
         [alertVC addAction:cancel];
         [alertVC addAction:ok];
         [self presentViewController:alertVC animated:YES completion:nil];
     }
-    else{
-        [self.locationManager startUpdatingLocation];
-    }
+    
+
     
 }
 
@@ -137,7 +85,7 @@
     //1.获取用户位置的对象
     CLLocation *currentLocation = [locations lastObject];
     CLLocationCoordinate2D coordinate = currentLocation.coordinate;
-    //NSLog(@"纬度%f 经度%f",coordinate.latitude,coordinate.longitude);
+    NSLog(@"纬度%f 经度%f",coordinate.latitude,coordinate.longitude);
     
     _coordinate.text = [NSString stringWithFormat:@"纬度%f 经度%f",coordinate.latitude,coordinate.longitude];
     
@@ -172,13 +120,8 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(nonnull NSError *)error{
-    
-    NSLog(@"222222222222222");
-    
-    if (error.code == kCLErrorDenied) {
-        //提示用户出错原因，可按住option键 点击 KCKErrorDenied 的查看跟多出错信息
-        NSLog(@"error --%ld",(long)error.code);
-    }
+
+
     
     NSLog(@"error --%ld",(long)error.code);
     
